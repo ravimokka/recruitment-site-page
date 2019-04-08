@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>WebApp</title>
+    {% load static %}
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+     <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>-->
+    <!--<script src="{% static 'add-cuntry.js' %}"></script>-->
+</head>
+<style type="text/css">
+<!--.btn {-->
+  <!--background-color: red;-->
+  <!--border: none;-->
+  <!--color: white;-->
+  <!--padding: 12px 16px;-->
+  <!--font-size: 16px;-->
+  <!--cursor: pointer;-->
+<!--}-->
+
+
+
+
+
+</style>
+
+
+<body style="background-color:#b3f3fc">
+
+<div class="container">
+    <div style="margin-top: 50px;">
+
+<table class="table table-bordered">
+                       <thead>
+                          <tr>
+                              <th>View</th>
+                            <th>Name</th>
+                            <!--<th>Phone</th>-->
+                            <!--<th>Email</th>-->
+                            <!--<th>State</th>-->
+                            <!--<th>Location</th>-->
+                            <!--<th>Organisation</th>-->
+                            <!--<th>Experience</th>-->
+                            <!--<th>Re Experience</th>-->
+                            <th>Status</th>
+
+                            <!--<th>Designation</th>-->
+                            <!--<th>Skills</th>-->
+
+                          </tr>
+                        </thead>
+                     <tbody>
+                    <!--<th class="danger">-->
+                        <!--<td>country_name</td>-->
+                        <!--<td>country_code</td>-->
+
+                    <!--</th>-->
+        {% if data %}
+            {% for item in data %}
+            <tr class="info">
+                <!--<td><i class="fa fa-address-book-o avatar"  style="font-size:100px;color:red"></i></td>-->
+                <td> <span class="glyphicon glyphicon-user" style="font-size:50px;"></span></td>
+                <td >{{ item.fields.name }}</td>
+
+                <!--<td>{{ item.fields.phone }}</td>-->
+                <!--<td>{{ item.fields.email }}</td>-->
+                <!--<td>{{ item.fields.state }}</td>-->
+                <!--<td>{{ item.fields.location }}</td>-->
+                <!--<td>{{ item.fields.organisation }}</td>-->
+                <!--<td>{{ item.fields.re_experience }}</td>-->
+                <!--<td>{{ item.fields.designation }}</td>-->
+                <td><input type="submit" class="btn btn-primary"  name='username' value='{{ item.fields.name }}'onclick="window.location.href = '/view_profile';">View Profile </input>  <button type="button" class="btn btn-success">Accept</button>  <button type="button" class="btn btn-info">Reject</button>  </td>
+
+                </tr>
+                {% endfor %}
+            {% else %}
+                 <td>No recors Found</td>
+            {% endif %}
+         </tbody>
+    </table>
+
+</div>
+
+    <!--<div class="add-new">-->
+         <!--&lt;!&ndash;<form action="/create/" method="post">&ndash;&gt;-->
+                    <!--&lt;!&ndash;{% csrf_token %}&ndash;&gt;-->
+                    <!--&lt;!&ndash;Country Name <input type = 'text' id ='country_name' >&ndash;&gt;-->
+                    <!--&lt;!&ndash;Country Code <input type = 'text' id ='country_code' >&ndash;&gt;-->
+                     <!--&lt;!&ndash;&ndash;&gt;-->
+             <!--&lt;!&ndash;</form>&ndash;&gt;-->
+        <!--&lt;!&ndash;&ndash;&gt;-->
+         <!--<form  method="post" action="/add_new_cou/">{% csrf_token %}-->
+        <!--<label for="country_name" > Country Name: <input type="text" name="name" /> </label><br>-->
+        <!--<label for="country_code"> Country Code:<input type="text" name="mobile_number" /> </label><br>-->
+        <!--<button type="submit" class="btn btn-primary" id="cou-save"> Save </button>-->
+    <!--</form>-->
+    <!--</div>-->
+</div>
+</body>
+</html>

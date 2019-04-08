@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>WebApp</title>
+    {% load static %}
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+         <script src="{% static 'index.js' %}"></script>
+</head>
+<style type="text/css">
+
+
+    .note
+{
+    text-align: center;
+    height: 80px;
+    background: -webkit-linear-gradient(left, #0072ff, #8811c5);
+    color: #fff;
+    font-weight: bold;
+    line-height: 80px;
+}
+
+.logout{
+        margin-left: 1068px;
+        margin-bottom: 10px;
+         margin-top: -29px;
+
+
+}
+
+#btn-accept {
+  background-color: #3bd5ed;
+  border: none;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+#btn-accept {border-radius: 4px;}
+#btn-accept {padding: 6px 18px;}
+
+.gtext {
+    color: black;
+    text-shadow: 2px 2px 5px blue;
+    font-size: 140%;
+}
+
+
+</style>
+
+
+<body style="background-color:#b3f3fc">
+
+
+
+<div class="container">
+    <div style="margin-top: 50px;">
+        <form method='get' action='/login'>
+            <button type="submit" class="btn btn-primary logout" >Logout </button>
+        </form>
+<table class="table table-bordered note">
+                       <thead>
+                          <tr>
+                              <th style="text-align:-webkit-center;">Profile Picture</th>
+                            <th style="text-align:-webkit-center;"> Employee Name</th>
+                            <th style="text-align:-webkit-center;">Action Type</th>
+
+                          </tr>
+                        </thead>
+                     <tbody>
+        {% if data %}
+            {% for item in data %}
+            <tr class="info">
+                <td> <span class="glyphicon glyphicon-user" style="font-size:50px;"></span></td>
+                <td class="gtext">{{ item.fname }} {{ item.lname }}</td>
+
+                    <td>
+
+                        <form method='get' action='/view_profile'>
+                            <button type="submit" class="btn btn-primary" name='username' value='{{ item.fname }}' onclick="window.location.href = '/view_profile';">View Profile </button>
+                            {% with accept='accept' reject='reject' %}
+                            <button type="submit" name="accept" value="{{ item.fname }}" class="btn btn-success" id="" data-toggle="modal" data-target="#myModal">Accept</button>
+                            <button type="submit" name="reject" value="{{ item.fname }}" class="btn btn-danger">Reject</button>
+                            {% endwith %}
+                        </form>
+
+                    </td>
+
+
+                </tr>
+                {% endfor %}
+            {% else %}
+                    <td></td>
+                 <td>No recors Found</td>
+                    <td></td>
+            {% endif %}
+         </tbody>
+    </table>
+
+</div>
+
+
+</div>
+                 <!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Modal Accept</h4>
+        </div>
+        <div class="modal-body">
+          <p>User successfuly accept.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Ok</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</body>
+</html>

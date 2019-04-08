@@ -1,0 +1,100 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
+<div class="container">
+	<div class="row">
+       <div class="col-md-7 " style="margin-top:30px">
+<div class="panel panel-default">
+  <div class="panel-heading">  <h4 >User Profile</h4></div>
+   <div class="panel-body">
+    <div class="box box-info">
+            <div class="box-body">
+                     <div class="col-sm-6">
+                     <div  align="center"> <img alt="User Pic" src="https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg" id="profile-image1" class="img-circle img-responsive">
+                <input id="profile-image-upload" class="hidden" type="file">
+
+                     </div>
+
+              <br>
+              <!-- /input-group -->
+            </div>
+            <div class="col-sm-6">
+            <h4 style="color:#00b1b1;, margin-top:50px">Employee Details</h4></span>
+            </div>
+            <div class="clearfix"></div>
+            <hr style="margin:5px 0 5px 0;">
+ {% if data %}
+            {% for item in data %}
+<div class="col-sm-5 col-xs-6 tital " >First Name:</div><div class="col-sm-7 col-xs-6 ">{{ item.fields.fname }}</div>
+     <div class="clearfix"></div>
+<div class="bot-border"></div>
+
+<div class="col-sm-5 col-xs-6 tital " >Last Name:</div><div class="col-sm-7"> {{ item.fields.lname }}</div>
+  <div class="clearfix"></div>
+<div class="bot-border"></div>
+
+<div class="col-sm-5 col-xs-6 tital " >Date Of Birth:</div><div class="col-sm-7"> {{ item.fields.d_b }}</div>
+  <div class="clearfix"></div>
+<div class="bot-border"></div>
+
+<div class="col-sm-5 col-xs-6 tital " >Phone No:</div><div class="col-sm-7">{{ item.fields.phone }}</div>
+
+  <div class="clearfix"></div>
+<div class="bot-border"></div>
+
+<div class="col-sm-5 col-xs-6 tital " >Email Id:</div><div class="col-sm-7">{{ item.fields.email }}</div>
+
+ <div class="clearfix"></div>
+<div class="bot-border"></div>
+
+<div class="col-sm-5 col-xs-6 tital " >Location:</div><div class="col-sm-7">{{ item.fields.location }}</div>
+
+ <div class="clearfix"></div>
+<div class="bot-border"></div>
+                <div class="col-sm-5 col-xs-6 tital " >Organisation:</div><div class="col-sm-7">{{ item.fields.organisation }}</div>
+
+ <div class="clearfix"></div>
+<div class="bot-border"></div>
+                <div class="col-sm-5 col-xs-6 tital " >Experience:</div><div class="col-sm-7">{{ item.fields.experience }}</div>
+
+ <div class="clearfix"></div>
+<div class="bot-border"></div>
+                <div class="col-sm-5 col-xs-6 tital " >Relevant Experience :</div><div class="col-sm-7">{{ item.fields.re_experience }}</div>
+
+ <div class="clearfix"></div>
+<div class="bot-border"></div>
+                <div class="col-sm-5 col-xs-6 tital " >Designation:</div><div class="col-sm-7">{{ item.fields.designation }}</div>
+
+ <div class="clearfix"></div>
+<div class="bot-border"></div>
+                <div class="col-sm-5 col-xs-6 tital " >skill:</div><div class="col-sm-7">{{ item.fields.skills }}</div>
+
+ <div class="clearfix"></div>
+<div class="bot-border"></div>
+                <div class="col-sm-5 col-xs-6 tital " >Nationality:</div><div class="col-sm-7">{{ item.fields.nationality }}</div>
+
+
+                    {% endfor %}
+            {% else %}
+                 <td>No recors Found</td>
+            {% endif %}
+
+
+          </div>
+
+
+        </div>
+
+
+    </div>
+    </div>
+</div>
+<button type="button" class="btn btn-primary" onclick="window.location.href = '/index';" style="margin-top:40px">Back</button>
+
+   </div>
+</div>
+
+
+
+
