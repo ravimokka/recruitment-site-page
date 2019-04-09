@@ -29,6 +29,7 @@ class Employeedetails(models.Model):
     nationality = models.CharField(max_length=20, null=True)
     action_type = models.CharField(max_length=20, null=True)
     action = models.IntegerField(default=0)
+    docfile = models.FileField(upload_to='documents/%Y/%m/%d')
     # action_type = models.ForeignKey(Actiontype ,on_delete=models.CASCADE)
 
 

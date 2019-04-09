@@ -26,12 +26,13 @@ def Homepage(request):
         Designation = request.POST.get('your_designation')
         Skill = request.POST.get('your_skill')
         Nationality = request.POST.get('nationality')
+        Myfile = request.POST.get('myfile')
         Action = 1
         Actiontype = 'submit'
         data = Employeedetails(fname=First_Name, lname=Last_Name, phone=Phone, d_b=Date_Birth, email=Email,
                                location=Location, organisation=Organisation, experience=Experience,
                                re_experience=Re_experience, designation=Designation, skills=Skill, nationality=Nationality,
-                               action=Action, action_type=Actiontype)
+                               action=Action, action_type=Actiontype,  docfile=Myfile)
         data.save()
         return render(request,'homepage.html')
     else:
