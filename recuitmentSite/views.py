@@ -27,16 +27,24 @@ def Homepage(request):
         Skill = request.POST.get('your_skill')
         Nationality = request.POST.get('nationality')
         Myfile = request.POST.get('myfile')
-        Action = 1
-        Actiontype = 'submit'
-        data = Employeedetails(fname=First_Name, lname=Last_Name, phone=Phone, d_b=Date_Birth, email=Email,
-                               location=Location, organisation=Organisation, experience=Experience,
-                               re_experience=Re_experience, designation=Designation, skills=Skill, nationality=Nationality,
-                               action=Action, action_type=Actiontype,  docfile=Myfile)
-        data.save()
-        return render(request,'homepage.html')
+        if First_Name and Last_Name and Date_Birth and Phone and Email and Location and Organisation and Experience and Re_experience and  Designation and Skill and Nationality:
+            if Myfile:
+                Action = 1
+                Actiontype = 'submit'
+                data = Employeedetails(fname=First_Name, lname=Last_Name, phone=Phone, d_b=Date_Birth, email=Email,
+                                       location=Location, organisation=Organisation, experience=Experience,
+                                       re_experience=Re_experience, designation=Designation, skills=Skill, nationality=Nationality,
+                                       action=Action, action_type=Actiontype,  docfile=Myfile)
+                data.save()
+                return render(request,'homepage.html')
+            return render(request, 'homepage.html', {'massage_resume': 'Please upload resume','fname':First_Name, 'lname':Last_Name,
+                                                     'd_b':Date_Birth, 'phone':Phone, 'email':Email, 'location':Location, 'org':Organisation,
+                                                     'exp':Experience, 're_exp':Re_experience, 'desig':Designation, 'skills':Skill, 'nationality':Nationality})
+        else:
+            return render(request, 'homepage.html', {'massage' :'Please fill in the all fields'})
+
     else:
-        return render(request,'homepage.html')
+        return render(request,'homepage.html', {'massage' :''})
 
 
 def View_Profile(req):
@@ -93,20 +101,23 @@ def Index(request):
     if request.method == 'POST':
         User_name = request.POST.get('username')
         Pass_word = request.POST.get('password')
-        if User_name == constent.Username and Pass_word == constent.Password:
-            orm_cou = Employeedetails.objects.all()
-            data = serializers.serialize('json', orm_cou)
-            j = json.loads(data)
-            emp_data =[]
-            for i in j:
-                if i['fields']['action']==1:
-                    fname =i['fields']['fname']
-                    lname =i['fields']['lname']
-                    emp_data.append({'fname':fname, 'lname':lname})
-            context = {'data': emp_data}
-            return render(request,'index.html', context)
+        if User_name and Pass_word:
+            if User_name == constent.Username and Pass_word == constent.Password:
+                orm_cou = Employeedetails.objects.all()
+                data = serializers.serialize('json', orm_cou)
+                j = json.loads(data)
+                emp_data =[]
+                for i in j:
+                    if i['fields']['action']==1:
+                        fname =i['fields']['fname']
+                        lname =i['fields']['lname']
+                        emp_data.append({'fname':fname, 'lname':lname})
+                context = {'data': emp_data}
+                return render(request,'index.html', context)
+            else:
+                return render(request, 'login_administrator.html', {'massage' :'Invalid Username and Password'})
         else:
-            return render(request, 'login_administrator.html')
+            return render(request, 'login_administrator.html', {'massage': 'Please enter Username and Password'})
     else:
         orm_cou = Employeedetails.objects.all()
         data = serializers.serialize('json', orm_cou)

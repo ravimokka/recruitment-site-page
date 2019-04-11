@@ -56,19 +56,20 @@
                 </div>
 
                 <div class="form-content">
+                    <p style="color:red; text-align:-webkit-center">{{ massage }}</p>
                     <div class="row">
                         <div class="col-md-3">
                             <div class="form-group">
-                                <input type="text" name="your_firstname" class="form-control" placeholder="Your FirstName *" value=""/>
+                                <input type="text" name="your_firstname" class="form-control" placeholder="Your FirstName *" value="{{ fname }}"/>
                             </div>
                             <div class="form-group">
-                                <input type="text" name="your_lastname"  class="form-control" placeholder="Your LastName *" value=""/>
+                                <input type="text" name="your_lastname"  class="form-control" placeholder="Your LastName *" value="{{ lname }}"/>
                             </div>
                             <div class="form-group">
-                                <input type="text" name="date_birth"  class="form-control" placeholder="Date of Birth  *" value=""/>
+                                <input type="text" name="date_birth"  class="form-control" placeholder="Date of Birth  *" value="{{ d_b }}"/>
                             </div>
                              <div class="form-group">
-                                <input type="number" name="phone_no"  class="form-control" placeholder="Phone Number *"  value=""/>
+                                <input type="number" name="phone_no"  class="form-control" placeholder="Phone Number *"  value="{{ phone }}"/>
                             </div>
 
 
@@ -76,17 +77,17 @@
 
                   <div class="col-md-3">
                        <div class="form-group">
-                                <input type="text" name="emailid"  class="form-control" placeholder="Email Id *" value=""/>
+                                <input type="text" name="emailid"  class="form-control" placeholder="Email Id *" value="{{ email }}"/>
                             </div>
                     <div class="form-group">
-                                <input type="text" name="your_location"  class="form-control" placeholder="Location *" value=""/>
+                                <input type="text" name="your_location"  class="form-control" placeholder="Location *" value="{{ location }}"/>
                             </div>
 
                         <div class="form-group">
-                                <input type="text" name="your_organisation"  class="form-control" placeholder="Your organisation *" value=""/>
+                                <input type="text" name="your_organisation"  class="form-control" placeholder="Your organisation *" value="{{ org }}"/>
                             </div>
                             <div class="form-group">
-                                <input type="text" name="your_experience"  class="form-control" placeholder="Your experience *" value=""/>
+                                <input type="text" name="your_experience"  class="form-control" placeholder="Your experience *" value="{{ exp }}"/>
                             </div>
 
 
@@ -94,17 +95,18 @@
 
                         <div class="col-md-3">
                             <div class="form-group">
-                                <input type="text" name="your_relevant_experience"  class="form-control" placeholder="Your relevant experience *" value=""/>
+                                <input type="text" name="your_relevant_experience"  class="form-control" placeholder="Your relevant experience *" value="{{ re_exp }}"/>
                             </div>
 
                             <div class="form-group">
-                                <input type="text" name="your_designation"  class="form-control" placeholder="Your designation *" value=""/>
+                                <input type="text" name="your_designation"  class="form-control" placeholder="Your designation *" value="{{ desig }}"/>
                             </div>
                             <div class="form-group">
-                                <input type="text" name="your_skill" class="form-control" placeholder="Your Skills *" value=""/>
+                                <input type="text" name="your_skill" class="form-control" placeholder="Your Skills *" value="{{ skills }}"/>
                             </div>
                             <div class="form-group">
-                                <input type="text" name="nationality"  class="form-control" placeholder="Nationality *" value=""/>
+
+                                <input type="text" name="nationality"  class="form-control" placeholder="Nationality *" value="{{ nationality }}"/>
                             </div>
                         </div>
                         <div class="col-md-3">
@@ -112,6 +114,7 @@
 
 
                             <div class="form-group">
+                                 <p style="color:red">{{ massage_resume }}</p>
                                 Upload Resume<input type="file" name="myfile" class="form-control" placeholder="Your Skills *" value=""/>
                             </div>
 
